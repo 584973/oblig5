@@ -5,7 +5,7 @@ import java.util.Iterator;
 import no.hvl.dat102.adt.BSTreADT;
 
 //********************************************************************
-// KjedetBinærSøkeTre.java        
+// KjedetBinï¿½rSï¿½keTre.java        
 //
 //********************************************************************
 
@@ -58,7 +58,23 @@ public class KjedetBSTre<T extends Comparable<T>> implements BSTreADT<T>, Iterab
 
 	public T fjernMin() {
 
-		return null;
+		T result = null;
+		
+		if(rot.getVenstre() == null) {
+			result = rot.getElement();
+			rot.getHoyre();
+		} else {
+			BinaerTreNode<T> parent = rot;
+			BinaerTreNode<T> current = rot.getVenstre();
+			while(current.getVenstre() != null) {
+				parent = current;
+				current = current.getVenstre();
+			}
+			result = current.getElement();
+			parent.setVenstre(current.getHoyre());
+					}
+		antall--;
+		return result;
 
 	}
 
@@ -69,7 +85,21 @@ public class KjedetBSTre<T extends Comparable<T>> implements BSTreADT<T>, Iterab
 
 	public T finnMin() {
 
-		return null;
+T result = null;
+		
+		if(rot.getVenstre() == null) {
+			result = rot.getElement();
+			rot.getHoyre();
+		} else {
+			BinaerTreNode<T> current = rot.getVenstre();
+			while(current.getVenstre() != null) {
+				current = current.getVenstre();
+			}
+			result = current.getElement();
+					}
+		return result;
+		
+		
 	}
 
 	public T finnMaks() {
